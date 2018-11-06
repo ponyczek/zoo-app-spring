@@ -8,17 +8,18 @@ import javax.persistence.*;
 public class Cage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "cageId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "cageId")
     private Integer id;
 
-    private boolean isOccupied;
+    private String name;
 
     private String location;
 
-    public Cage(int id, boolean isOccupied, String location) {
+    public Cage(int id, String name, String location) {
+        super();
         this.id = id;
-        this.isOccupied = isOccupied;
+        this.name = name;
         this.location = location;
     }
 
@@ -33,14 +34,6 @@ public class Cage {
         this.id = id;
     }
 
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
-
     public String getLocation() {
         return location;
     }
@@ -49,4 +42,11 @@ public class Cage {
         this.location = location;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

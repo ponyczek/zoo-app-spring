@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class AnimalController {
@@ -25,7 +26,7 @@ public class AnimalController {
     @PostMapping("/cages/{cageId}/animals")
     public void createAnimal(@PathVariable(value = "cageId") int cageId, @Valid @RequestBody Animal animal) {
         //The cage is the parent here.
-        animal.setCage(new Cage(cageId, true, ""));
+        animal.setCage(new Cage(cageId, "", ""));
         animalService.addAnimal(animal);
     }
 
@@ -37,14 +38,14 @@ public class AnimalController {
 
     // Update an Animal
     @PutMapping("/cages/{cageId}/animals/{animalId}")
-    public void updateAnimal(@PathVariable(value = "animalId") int animalId, @PathVariable(value = "cageId") int cageId,
+    public void updateAnimal( @PathVariable(value = "cageId") int cageId,
                              @Valid @RequestBody Animal animal) {
-        animal.setCage(new Cage(cageId, true, ""));
+        animal.setCage(new Cage(cageId, "", ""));
         animalService.updateAnimal(animal);
     }
 
     // Delete an animal
-    @DeleteMapping("/cages/{cageId/animals/{animalId}")
+    @DeleteMapping("/cages/{cageId}/animals/{animalId}")
     public void deleteAnimal(@PathVariable(value = "animalId") int animalId) {
         animalService.deleteAnimal(animalId);
     }

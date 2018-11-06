@@ -1,22 +1,20 @@
 package com.zoomanager.zoo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
-//@Table(name = "ANIMAL")
 @Entity
 public class Animal {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    @Column(name = "animalId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
 
     private int age;
+
+    private String imgUrl;
 
     @ManyToOne
     private Cage cage;
@@ -27,10 +25,11 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(String name, int age, AnimalClass animalClass, int cageId) {
+    public Animal(String name, int age, String imgUrl, AnimalClass animalClass, int cageId) {
         this.name = name;
         this.age = age;
-        this.cage = new Cage(cageId, true,"");
+        this.imgUrl = imgUrl;
+        this.cage = new Cage(cageId, "", "");
         this.animalClass = animalClass;
     }
 
@@ -64,6 +63,14 @@ public class Animal {
 
     public void setCage(Cage cage) {
         this.cage = cage;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public AnimalClass getAnimalClass() {

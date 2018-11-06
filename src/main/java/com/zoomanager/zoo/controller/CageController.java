@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class CageController {
 
     @Autowired
-    CageService cageService;
+    private CageService cageService;
 
     // Get All Cages
     @GetMapping("/cages")
@@ -38,7 +39,7 @@ public class CageController {
     @PutMapping("/cages/{id}")
     public void updateCage(@PathVariable(value = "id") int cageId,
                            @Valid @RequestBody Cage cage) {
-        cageService.updateCage(cageId, cage);
+        cageService.updateCage(cage);
     }
 
     // Delete an cage
@@ -46,4 +47,5 @@ public class CageController {
     public void deleteCage(@PathVariable(value = "id") int cageId) {
         cageService.deleteCage(cageId);
     }
+
 }

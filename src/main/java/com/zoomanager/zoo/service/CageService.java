@@ -8,33 +8,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
 public class CageService {
     @Autowired
     private CageRepository cageRepository;
+    @Autowired
+    private AnimalRepository animalRepository;
 
-    public List<Cage> getAllCages(){
+    public List<Cage> getAllCages() {
         List<Cage> cages = new ArrayList<>();
         cageRepository.findAll().forEach(cages::add);
         return cages;
     }
 
-    public Cage getCage(int id){
+    public Cage getCage(int id) {
         return cageRepository.getOne(id);
     }
 
-    public void addCage(Cage cage){
+    public void addCage(Cage cage) {
         cageRepository.save(cage);
     }
 
-    public void updateCage(int id, Cage cage){
+    public void updateCage(Cage cage) {
         cageRepository.save(cage);
     }
 
-    public void deleteCage(int id){
+    public void deleteCage(int id) {
+        List<Animal> animals = animalRepository.findByCageId(id);
+        for ( Animal a : animals){
+            if (a != null){
+                animalRepository.delete(a);
+            }
+        }
         cageRepository.deleteById(id);
     }
 
