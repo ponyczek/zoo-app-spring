@@ -5,7 +5,6 @@ import com.zoomanager.zoo.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,10 +13,8 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public List<Animal> getAllAnimals(int cageId) {
-        List<Animal> animals = new ArrayList<>();
-        animalRepository.findByCageId(cageId).forEach(animals::add);
-        return animals;
+    public List<Animal> getAnimalsByCage(int cageId) {
+        return animalRepository.findByCageId(cageId);
     }
 
     public Animal getAnimal(int id) {

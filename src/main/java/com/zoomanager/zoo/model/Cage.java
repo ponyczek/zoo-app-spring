@@ -1,15 +1,16 @@
 package com.zoomanager.zoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 
-//@Table(name = "CAGE")
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Cage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "cageId")
     private Integer id;
 
     private String name;
@@ -17,7 +18,6 @@ public class Cage {
     private String location;
 
     public Cage(int id, String name, String location) {
-        super();
         this.id = id;
         this.name = name;
         this.location = location;

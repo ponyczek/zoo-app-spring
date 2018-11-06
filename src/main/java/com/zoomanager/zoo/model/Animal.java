@@ -1,8 +1,13 @@
 package com.zoomanager.zoo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Animal {
 
 
@@ -17,6 +22,7 @@ public class Animal {
     private String imgUrl;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Cage cage;
 
     @Enumerated(EnumType.STRING)
