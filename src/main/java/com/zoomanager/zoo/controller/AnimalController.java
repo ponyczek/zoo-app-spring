@@ -19,8 +19,8 @@ public class AnimalController {
     private AnimalService animalService;
 
     @GetMapping("/cages/{cageId}/animals")
-    public List<Animal> getAllAnimals(@PathVariable(value = "cageId") int cageId) {
-        return animalService.getAllAnimals(cageId);
+    public List<Animal> getAnimalsByCage(@PathVariable(value = "cageId") int cageId) {
+        return animalService.getAnimalsByCage(cageId);
     }
 
     @PostMapping("/cages/{cageId}/animals")
