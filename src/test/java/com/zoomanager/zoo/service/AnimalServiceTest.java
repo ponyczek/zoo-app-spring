@@ -45,7 +45,7 @@ public class AnimalServiceTest {
     }
 
     @Test
-    public void getAllAnimaByCageTest() {
+    public void getAnimalsByCage() {
         List<Animal> animals = animalService.getAnimalsByCage(cageId);
         assertNotNull(animals);
     }
