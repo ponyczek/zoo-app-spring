@@ -44,15 +44,14 @@ public class AnimalCotrollerTests {
         cage.setName("cage2");
         cageService.addCage(cage);
         List<Cage> cages = cageService.getAllCages();
-        int cageId = cages.get(0)
-                .getId();
+        int cageId = cages.get(0).getId();
 
         Animal animal = new Animal("NameOne", 23, "someurl", AnimalClass.MAMMAL, cageId);
         Gson gson = new Gson();
 
         mockMvc.perform(post("/api/cages/" + cageId + "/animals").contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(animal)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -63,14 +62,12 @@ public class AnimalCotrollerTests {
         cage.setName("cage2");
         cageService.addCage(cage);
         List<Cage> cages = cageService.getAllCages();
-        int cageId = cages.get(0)
-                .getId();
+        int cageId = cages.get(0).getId();
         // Creating test data for animal
         Animal animal = new Animal("NameTwo", 23, "someurl", AnimalClass.MAMMAL, cageId);
         animalService.addAnimal(animal);
         List<Animal> animals = animalService.getAnimalsByCage(cageId);
-        int animalId = animals.get(0)
-                .getId();
+        int animalId = animals.get(0).getId();
 
         mockMvc.perform(get("/api/cages/" + cageId + "/animals/" + animalId))
                 .andExpect(status().isOk());

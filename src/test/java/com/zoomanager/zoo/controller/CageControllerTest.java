@@ -40,7 +40,7 @@ public class CageControllerTest {
 
         mockMvc.perform(post("/api/cages").contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(cage)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
