@@ -32,13 +32,13 @@ public class AnimalServiceTest {
     public void setup() {
         // Creating test data for cage
         Cage cage = new Cage();
-        cage.setLocation("SomeLocation");
-        cage.setName("cage2");
+        cage.setLocation("Test Location");
+        cage.setName("Test Cage");
         cageService.addCage(cage);
         List<Cage> cages = cageService.getAllCages();
         cageId = cages.get(0).getId();
         // Creating test data for animal
-        Animal animal = new Animal("NameTwo", 23, "someurl", AnimalClass.MAMMAL, cageId);
+        Animal animal = new Animal("Lion", 23, "someurl", AnimalClass.MAMMAL, cageId);
         animalService.addAnimal(animal);
         List<Animal> animals = animalService.getAnimalsByCage(cageId);
         animalId = animals.get(0).getId();
@@ -58,13 +58,13 @@ public class AnimalServiceTest {
 
     @Test
     public void createAnimalTest() {
-        Animal animal = new Animal("NameThree", 233, "someurl", AnimalClass.MAMMAL, cageId);
+        Animal animal = new Animal("Lion", 11, "someurl", AnimalClass.MAMMAL, cageId);
         animalService.addAnimal(animal);
     }
 
     @Test
     public void updateAnimalTest() {
-        Animal animal = new Animal("NameThree", 233, "someurlupdated", AnimalClass.MAMMAL, cageId);
+        Animal animal = new Animal("Lion", 12, "updatedUrl", AnimalClass.MAMMAL, cageId);
         animal.setAge(animalId);
         animalService.updateAnimal(animal);
     }

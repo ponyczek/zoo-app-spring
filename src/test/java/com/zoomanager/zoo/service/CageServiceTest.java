@@ -48,13 +48,13 @@ public class CageServiceTest {
 
     @Test
     public void createAnimalTest() {
-        Cage cage = new Cage(cageId, "CageTy", "somelo");
+        Cage cage = new Cage(cageId, "Cage 1", "test location");
         cageService.addCage(cage);
     }
 
     @Test
     public void updateAnimalTest() {
-        Cage cage = new Cage(cageId, "CageTy", "somelo");
+        Cage cage = new Cage(cageId, "Cage 2", "new location");
         cageService.updateCage(cage);
     }
 
