@@ -35,7 +35,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/zoo
 spring.datasource.username=zoo
 spring.datasource.password=zoo
 ```
-You may also want to set the to change the: 
+You may also want to set the following line to: 
 ```
 spring.jpa.hibernate.ddl-auto=create
 ```
