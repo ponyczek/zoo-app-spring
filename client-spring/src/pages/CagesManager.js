@@ -58,7 +58,7 @@ class CagesManager extends Component {
   };
 
   handleClickOpen = () => {
-    this.setState({ openModal: true, edit: false, cage: {} });
+    this.setState({ openModal: true, edit: false, cage: {}, name: "", location: "" });
   };
 
   handleClose = () => {
